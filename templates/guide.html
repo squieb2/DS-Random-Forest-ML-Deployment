@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide - Wine Quality Prediction API</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .guide-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .guide-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+        }
+
+        .guide-header p {
+            margin: 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .guide-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .guide-section h2 {
+            color: #1e3c72;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 10px;
+        }
+
+        .guide-section h3 {
+            color: #2a5298;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .guide-section p {
+            line-height: 1.7;
+            color: #5a6c7d;
+            margin-bottom: 15px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            line-height: 1.8;
+            color: #5a6c7d;
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+
+        .guide-section li {
+            margin-bottom: 10px;
+        }
+
+        .method-card {
+            background: #f8f9fa;
+            border-left: 4px solid #2a5298;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .method-card h4 {
+            color: #1e3c72;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .method-card p {
+            margin: 5px 0;
+        }
+
+        .button-example {
+            background: white;
+            color: #2a5298;
+            border: 2px solid #2a5298;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 5px 5px 5px 0;
+        }
+
+        .tip-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 20px 0;
+        }
+
+        .tip-box strong {
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .tip-box p {
+            margin: 0;
+            color: #2e7d32;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box strong {
+            color: #e65100;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .warning-box p {
+            margin: 0;
+            color: #e65100;
+        }
+
+        .feature-list {
+            background: #f5f7fa;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 5px;
+        }
+
+        code {
+            background: #f5f7fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #1e3c72;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide-container">
+        <a href="/" class="back-link">← Back to Prediction Tool</a>
+
+        <div class="guide-header">
+            <h1>How to Use the Wine Quality Prediction Tool</h1>
+            <p>A complete guide to getting predictions with ease</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>Overview</h2>
+            <p>This tool uses a Machine Learning model to predict wine quality based on chemical properties. The model classifies wines into three categories:</p>
+            <ul>
+                <li><strong>High Quality</strong> - Premium wines with excellent characteristics</li>
+                <li><strong>Medium Quality</strong> - Good wines with acceptable characteristics</li>
+                <li><strong>Low Quality</strong> - Wines with less desirable characteristics</li>
+            </ul>
+        </div>
+
+        <div class="guide-section">
+            <h2>Three Ways to Get Predictions</h2>
+
+            <div class="method-card">
+                <h4>Method 1: Generate Random Sample (Easiest)</h4>
+                <p><strong>Best for:</strong> Quick testing and seeing the tool in action</p>
+                <ol>
+                    <li>Click the <span class="button-example">Generate Random Sample</span> button</li>
+                    <li>All 13 fields will be automatically filled with realistic values</li>
+                    <li>Click <strong>"Predict Wine Quality"</strong> to see the result</li>
+                    <li>You can generate as many random samples as you want!</li>
+                </ol>
+            </div>
+
+            <div class="method-card">
+                <h4>Method 2: Load Example Wine (Recommended)</h4>
+                <p><strong>Best for:</strong> Learning how the model works with real data</p>
+                <ol>
+                    <li>Click the <span class="button-example">Load Example Wine</span> button</li>
+                    <li>A window will appear with 10 preset wine samples</li>
+                    <li>Each sample shows its expected quality (High, Medium, or Low)</li>
+                    <li>Click on any wine sample to load its values into the form</li>
+                    <li>Click <strong>"Predict Wine Quality"</strong></li>
+                    <li>Compare the predicted quality with the expected quality shown in green/orange</li>
+                </ol>
+                <div class="tip-box">
+                    <strong>Tip:</strong>
+                    <p>When using example wines, you'll see if the model's prediction matches the expected result. This helps verify the model's accuracy!</p>
+                </div>
+            </div>
+
+            <div class="method-card">
+                <h4>Method 3: Enter Values Manually (Advanced)</h4>
+                <p><strong>Best for:</strong> Testing specific wine compositions</p>
+                <ol>
+                    <li>Click <span class="button-example">Show Valid Ranges</span> to see acceptable values for each feature</li>
+                    <li>Enter values for all 13 chemical properties (all fields are required)</li>
+                    <li>Use the ranges as a guide to enter realistic values</li>
+                    <li>Click <strong>"Predict Wine Quality"</strong></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>Understanding the 13 Features</h2>
+            <p>The model requires 13 chemical properties to make a prediction:</p>
+            <div class="feature-list">
+                <ol>
+                    <li><strong>Alcohol</strong> - Alcohol percentage (typically 11-15%)</li>
+                    <li><strong>Malic Acid</strong> - Type of acid found in wine</li>
+                    <li><strong>Ash</strong> - Mineral content</li>
+                    <li><strong>Ash Alcanity</strong> - Alkalinity of ash content</li>
+                    <li><strong>Magnesium</strong> - Magnesium concentration</li>
+                    <li><strong>Total Phenols</strong> - Total phenolic compounds</li>
+                    <li><strong>Flavanoids</strong> - Type of phenolic compound</li>
+                    <li><strong>Nonflavanoid Phenols</strong> - Another type of phenolic compound</li>
+                    <li><strong>Proanthocyanins</strong> - Tannin-related compounds</li>
+                    <li><strong>Color Intensity</strong> - Intensity of wine color</li>
+                    <li><strong>Hue</strong> - Color shade/tone</li>
+                    <li><strong>OD280</strong> - Optical density at 280nm (protein content indicator)</li>
+                    <li><strong>Proline</strong> - Amino acid concentration</li>
+                </ol>
+            </div>
+            <div class="warning-box">
+                <strong>Important:</strong>
+                <p>Don't worry if you don't understand these chemical terms! Use the "Generate Random Sample" or "Load Example Wine" buttons instead of entering values manually.</p>
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>Understanding Your Results</h2>
+            <p>After clicking "Predict Wine Quality", you'll see:</p>
+
+            <h3>1. Prediction</h3>
+            <p>The main result showing whether the wine is <strong>High</strong>, <strong>Medium</strong>, or <strong>Low</strong> quality.</p>
+
+            <h3>2. Confidence</h3>
+            <p>A percentage showing how confident the model is in its prediction. Higher percentages (70%+) indicate stronger confidence.</p>
+
+            <h3>3. Class Probabilities</h3>
+            <p>A breakdown showing the probability for each quality class. The bars show the likelihood of each category:</p>
+            <ul>
+                <li>The longest bar is the predicted class</li>
+                <li>Shorter bars show alternative possibilities</li>
+                <li>All probabilities add up to 100%</li>
+            </ul>
+
+            <h3>4. Expected vs Actual (for Example Wines only)</h3>
+            <p>When you use a preset example wine:</p>
+            <ul>
+                <li><strong>Green box</strong> with a checkmark ✓ means the prediction was correct</li>
+                <li><strong>Orange box</strong> means the prediction differed from the expected result</li>
+            </ul>
+            <div class="tip-box">
+                <strong>Note:</strong>
+                <p>Machine learning models aren't 100% accurate. It's normal for some predictions to differ from expected results. This tool typically achieves 85-90% accuracy on training data.</p>
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2>Common Questions</h2>
+
+            <h3>Q: Why do I need to enter so many values?</h3>
+            <p>A: The model was trained on 13 chemical features, so it needs all 13 to make accurate predictions. However, you don't have to enter them manually - use the "Generate Random Sample" or "Load Example Wine" buttons!</p>
+
+            <h3>Q: What if the prediction is wrong?</h3>
+            <p>A: Machine learning models make predictions based on patterns in training data. They aren't perfect and may occasionally misclassify wines. This is normal behavior.</p>
+
+            <h3>Q: Can I use my own wine data?</h3>
+            <p>A: Yes! If you have actual chemical analysis data for a wine, you can enter the values manually. Make sure to use the "Show Valid Ranges" button to ensure your values are realistic.</p>
+
+            <h3>Q: What happens when I click "Reset Form"?</h3>
+            <p>A: The reset button clears all input fields and hides any results. You'll start with a fresh, empty form.</p>
+
+            <h3>Q: Why does the same random sample give different values each time?</h3>
+            <p>A: The random sample generator creates unique values each time based on the statistical distribution of the training data. This helps you test the model with diverse inputs.</p>
+        </div>
+
+        <div class="guide-section">
+            <h2>Quick Start Guide</h2>
+            <p><strong>New to this tool? Follow these steps:</strong></p>
+            <ol>
+                <li>Go back to the <a href="/">main page</a></li>
+                <li>Click <span class="button-example">Generate Random Sample</span></li>
+                <li>Click the blue <strong>"Predict Wine Quality"</strong> button</li>
+                <li>View your results!</li>
+                <li>Try clicking <span class="button-example">Load Example Wine</span> to see how the model performs on real data</li>
+            </ol>
+        </div>
+
+        <div class="guide-section">
+            <h2>API Usage (For Developers)</h2>
+            <p>This tool also provides a RESTful API for programmatic access:</p>
+            <ul>
+                <li><code>GET /api/health</code> - Check if the API is running</li>
+                <li><code>GET /api/model</code> - Get information about the model</li>
+                <li><code>GET /api/features</code> - Get list of required features</li>
+                <li><code>GET /api/samples</code> - Get 10 preset samples and feature ranges</li>
+                <li><code>POST /api/predict</code> - Make a prediction (requires JSON body with all 13 features)</li>
+            </ul>
+            <p>See the main page for more details on available endpoints.</p>
+        </div>
+
+        <a href="/" class="back-link">← Back to Prediction Tool</a>
+    </div>
+</body>
+</html>

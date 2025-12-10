@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction API</title>
+    
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Wine Quality Prediction API</h1>
+            <p>Machine Learning-powered wine quality classification using chemical properties</p>
+            <p style="margin-top: 15px;">
+                <a href="/guide" style="color: white; text-decoration: underline; font-size: 16px; font-weight: 600;">
+                    Need Help? View User Guide
+                </a>
+            </p>
+        </div>
+
+        <div class="api-docs">
+            <h3>RESTful API Endpoints</h3>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span>/api/health - Health check</span>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span>/api/model - Model information</span>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span>/api/features - Feature list and descriptions</span>
+            </div>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span>/api/predict - Make quality prediction</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2 class="section-title">Enter Wine Chemical Properties</h2>
+
+            <!-- Quick Actions for Easy Testing -->
+            <div class="quick-actions">
+                <h3 class="quick-actions-title">Quick Start Options</h3>
+                <p class="quick-actions-description">
+                    Not sure what values to enter? Try these options to get started quickly:
+                </p>
+                <div class="button-row">
+                    <button type="button" class="btn-secondary" id="randomSampleBtn">
+                        Generate Random Sample
+                    </button>
+                    <button type="button" class="btn-secondary" id="loadPresetBtn">
+                        Load Example Wine
+                    </button>
+                    <button type="button" class="btn-secondary" id="showRangesBtn">
+                        Show Valid Ranges
+                    </button>
+                </div>
+            </div>
+
+            <!-- Feature Ranges Info (initially hidden) -->
+            <div class="info-panel" id="rangesPanel">
+                <div class="info-header">
+                    <h3>Valid Feature Ranges</h3>
+                    <button class="info-close" id="closeRanges">&times;</button>
+                </div>
+                <div class="info-body" id="rangesContent">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <form id="predictionForm">
+                <div class="form-grid">
+                    {% for feature in features %}
+                    <div class="form-group">
+                        <label for="{{ feature }}">{{ feature.replace('_', ' ').title() }}:</label>
+                        <input 
+                            type="number" 
+                            id="{{ feature }}" 
+                            name="{{ feature }}" 
+                            step="0.01" 
+                            required
+                            placeholder="Enter value">
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn-predict" id="predictBtn">
+                        Predict Wine Quality
+                    </button>
+                    <button type="reset" class="btn-reset">
+                        Reset Form
+                    </button>
+                    <div class="sample-indicator" id="sampleIndicator">
+                        <span class="indicator-text">Sample data loaded</span>
+                    </div>
+                </div>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p style="color: #666; font-size: 16px;">Making prediction...</p>
+            </div>
+
+            <div class="error" id="error">
+                <strong>Error:</strong> <span id="errorMessage"></span>
+            </div>
+
+            <div id="result" class="result">
+                <h2>Prediction Results</h2>
+                
+                <div class="prediction-card">
+                    <div class="prediction-value" id="predictionValue"></div>
+                    <div class="confidence" id="confidenceValue"></div>
+                </div>
+
+                <div class="probabilities">
+                    <h3>Class Probabilities</h3>
+                    <div id="probabilitiesContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preset Selection Modal (initially hidden) -->
+    <div class="modal" id="presetModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Example Wine Profile</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="presetList">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
