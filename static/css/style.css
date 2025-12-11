@@ -506,17 +506,19 @@ button {
     background: #5a7a95;
     color: white;
     padding: 20px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
 }
 
 .modal-header h3 {
     margin: 0;
     font-size: 20px;
+    padding-right: 40px;
 }
 
 .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
     background: transparent;
     border: none;
     color: white;
@@ -595,9 +597,7 @@ button {
     background: #f8f9fa;
     padding: 15px 20px;
     border-bottom: 1px solid #d1d9e0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
 }
 
 .info-header h3 {
@@ -605,9 +605,13 @@ button {
     color: #2c3e50;
     font-size: 16px;
     font-weight: 600;
+    padding-right: 35px;
 }
 
 .info-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
     background: transparent;
     border: none;
     color: #5a6c7d;
