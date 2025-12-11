@@ -105,7 +105,7 @@ function displayResults(data) {
 
     result.classList.add('show');
 
-    result.scrollIntoView({ behavior: 'smooth', block: 'nearest'});
+    result.scrollIntoView({ behavior: 'auto', block: 'nearest'});
 }
 
 function showError(message) {
